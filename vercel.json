@@ -1,8 +1,13 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/:path*",
-      "destination": "/:path*"
+      "source": "/((?!api/)[^/]+)/?",
+      "destination": "/$1.html",
+      "has": [
+        { "type": "host", "value": ".*" }
+      ]
     }
   ]
 }
