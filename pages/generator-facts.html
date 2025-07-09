@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facts Generator | Wanendira.</title>
+
+    <!-- Panggilan ke File CSS -->
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+    <div id="app-overlay" class="app-overlay"></div>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="branding-header">
+                <h1 class="brand-name">Wanendira<span class="brand-dot">.</span></h1>
+            </div>
+            <nav id="main-nav" class="navigation"></nav>
+        </aside>
+
+        <!-- Workspace Utama -->
+        <main class="workspace">
+            <header class="workspace-header">
+                <button id="menu-toggle" class="menu-toggle-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <h2 class="greeting">Facts Generator Studio</h2>
+                
+                <div class="profile-wrapper">
+                    <div id="user-profile-toggle" class="user-profile">
+                        <span class="user-name">Guest</span>
+                        <div class="user-avatar">G</div>
+                    </div>
+                    <div id="profile-dropdown" class="profile-dropdown">
+                        <div class="dropdown-item" id="manage-api-key">
+                            <span>🔑</span> Kelola API Key
+                        </div>
+                        <div class="dropdown-item">
+                            <span>⚙️</span> Pengaturan
+                        </div>
+                        <div class="dropdown-separator"></div>
+                        <div class="dropdown-item">
+                            <span>🚪</span> Keluar
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div id="content-area" class="content-area">
+                <div class="tabs">
+                    <button class="tab-link active" data-tab="interesting-facts">Fakta Menarik</button>
+                    <button class="tab-link" data-tab="historical-facts">Fakta Sejarah</button>
+                    <button class="tab-link" data-tab="science-facts">Fakta Sains</button>
+                </div>
+                
+                <div class="tab-content-wrapper">
+                    <!-- Tab Fakta Menarik -->
+                    <div id="interesting-facts" class="tab-content active">
+                        <div class="generator-container">
+                            <div class="input-section">
+                                <h3>Generator Fakta Menarik & Viral</h3>
+                                
+                                <div class="form-group">
+                                    <label for="facts-topic">Topik atau Kata Kunci:</label>
+                                    <input type="text" id="facts-topic" placeholder="Contoh: hewan laut, teknologi, ruang angkasa, makanan...">
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="facts-count">Jumlah Fakta:</label>
+                                        <select id="facts-count">
+                                            <option value="5">5 Fakta</option>
+                                            <option value="10" selected>10 Fakta</option>
+                                            <option value="15">15 Fakta</option>
+                                            <option value="20">20 Fakta</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="facts-style">Gaya Penyampaian:</label>
+                                        <select id="facts-style">
+                                            <option value="casual">Casual & Santai</option>
+                                            <option value="engaging">Engaging & Viral</option>
+                                            <option value="educational">Edukatif</option>
+                                            <option value="shocking">Shocking & Mengejutkan</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="target-audience">Target Audience:</label>
+                                    <select id="target-audience">
+                                        <option value="general">General (Semua Umur)</option>
+                                        <option value="teens">Remaja (13-19)</option>
+                                        <option value="young-adults">Dewasa Muda (20-30)</option>
+                                        <option value="adults">Dewasa (30+)</option>
+                                    </select>
+                                </div>
+
+                                <button class="generate-btn">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9.663 17h4.673M12 3v1m6.364 1.636-.707.707M21 12h-1M4 12H3m3.343-5.657-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                    </svg>
+                                    Generate Fakta
+                                </button>
+                            </div>
+
+                            <div class="output-section">
+                                <div id="facts-output-placeholder" class="output-placeholder">
+                                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M9.663 17h4.673M12 3v1m6.364 1.636-.707.707M21 12h-1M4 12H3m3.343-5.657-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                    </svg>
+                                    <p>Fakta-fakta menarik akan muncul di sini</p>
+                                </div>
+
+                                <div id="facts-output-wrapper" class="output-wrapper" style="display: none;">
+                                    <div class="output-header">
+                                        <h3>Generated Facts</h3>
+                                        <div class="output-actions">
+                                            <button id="facts-copy-btn" class="action-btn copy-btn">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                                                </svg>
+                                                Salin
+                                            </button>
+                                            <button id="facts-download-btn" class="action-btn download-btn">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                                    <polyline points="7,10 12,15 17,10"/>
+                                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                                </svg>
+                                                Download
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="output-content">
+                                        <div class="output-field">
+                                            <label>Judul Konten:</label>
+                                            <div id="facts-title" class="output-text" contenteditable="true"></div>
+                                        </div>
+
+                                        <div class="output-field">
+                                            <label>Fakta-Fakta:</label>
+                                            <div id="facts-list" class="output-text facts-list" contenteditable="true"></div>
+                                        </div>
+
+                                        <div class="output-field">
+                                            <label>Closing Statement:</label>
+                                            <div id="facts-closing" class="output-text" contenteditable="true"></div>
+                                        </div>
+
+                                        <div class="output-field">
+                                            <label>Hashtags:</label>
+                                            <div id="facts-hashtags" class="output-text" contenteditable="true"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Fakta Sejarah -->
+                    <div id="historical-facts" class="tab-content">
+                        <div class="placeholder-content">
+                            <h3 style="color: var(--text-bright);">Generator Fakta Sejarah akan segera hadir!</h3>
+                            <p style="color: var(--text-secondary);">Fitur untuk menghasilkan fakta-fakta sejarah yang menarik dan mudah dipahami.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tab Fakta Sains -->
+                    <div id="science-facts" class="tab-content">
+                        <div class="placeholder-content">
+                            <h3 style="color: var(--text-bright);">Generator Fakta Sains akan segera hadir!</h3>
+                            <p style="color: var(--text-secondary);">Fitur untuk menghasilkan fakta-fakta sains yang menarik dan mudah dipahami.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal API Key -->
+    <div id="api-key-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-modal-btn" class="modal-close-btn">×</button>
+            <h3>Kelola API Key Gemini</h3>
+            <p>Masukkan API Key Anda untuk menggunakan semua fitur generator. Kunci Anda disimpan dengan aman di browser Anda.</p>
+            <div class="form-group">
+                <label for="api-key-input">Google AI API Key</label>
+                <input type="password" id="api-key-input" placeholder="Masukkan API Key Anda di sini...">
+            </div>
+            <button id="save-api-key-btn" class="modal-action-btn">Simpan Kunci</button>
+        </div>
+    </div>
+
+    <!-- Panggilan ke File JavaScript -->
+    <script src="../assets/js/ui-loader.js"></script>
+    <script src="../assets/js/facts-generator.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
